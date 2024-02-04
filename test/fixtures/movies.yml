@@ -1,0 +1,29 @@
+<%[
+  "12 Angry Men",
+  "2001: A Space Odyssey",
+  "A Beautiful Mind",
+  "A Clockwork Orange",
+  "A Few Good Men",
+  "A Nightmare on Elm Street",
+  "A Quiet Place",
+  "A Star is Born (2018)",
+  "A Streetcar Named Desire",
+  "Aladdin (1992)",
+  "Alien",
+  "Aliens",
+  "Amadeus",
+  "Amelie",
+  "American Beauty",
+  "American History X",
+  "American Psycho",
+  "Annie Hall",
+  "Apocalypse Now",
+  "Arrival",
+  "Avatar",
+  "Avengers: Endgame",
+  "Avengers: Infinity War"
+].each do |title| %>
+<% sanitized_title = title.downcase.gsub(/[^a-z0-9\s]/, '').gsub(/\s+/, '_') %>
+<%= sanitized_title %>:
+  title: "<%= title %>"
+<% end %>

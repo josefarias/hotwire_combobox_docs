@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .youtube {
+    /* magnifying glass svg */
+    --hw-handle-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20enable-background%3D%22new%200%200%2024%2024%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%2224%22%20focusable%3D%22false%22%20style%3D%22pointer-events%3A%20none%3B%20display%3A%20block%3B%20width%3A%20100%25%3B%20height%3A%20100%25%3B%22%3E%3Cpath%20d%3D%22m20.87%2020.17-5.59-5.59C16.35%2013.35%2017%2011.75%2017%2010c0-3.87-3.13-7-7-7s-7%203.13-7%207%203.13%207%207%207c1.75%200%203.35-.65%204.58-1.71l5.59%205.59.7-.71zM10%2016c-3.31%200-6-2.69-6-6s2.69-6%206-6%206%202.69%206%206-2.69%206-6%206z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+    @apply flex items-center justify-center w-full;
+  }
+
+  .youtube .hw-combobox__input {
+    @apply sm:w-[35rem] rounded-full w-80;
+  }
+
+  .youtube .hw-combobox__handle {
+    @apply right-3;
+  }
+
+  .youtube .hw-combobox__listbox {
+    @apply rounded-2xl;
   }
 }
-
-*/

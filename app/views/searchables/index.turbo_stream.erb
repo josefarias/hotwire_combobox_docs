@@ -1,0 +1,4 @@
+<%= paginated_combobox_options @page.records,
+      for_id: "search",
+      render_in: { partial: "searchables/searchable" },
+      next_page: @page.last? ? nil : @page.next_param %>

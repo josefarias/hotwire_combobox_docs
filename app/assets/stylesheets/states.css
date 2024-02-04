@@ -1,0 +1,32 @@
+.state {
+  height: 3rem;
+}
+
+.state-flag {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+.state-flag::before {
+  content: '';
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('us.png');
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 100%;
+}
+
+.state-flag--alabama::before { background-image: url('alabama.png'); }
+.state-flag--florida::before { background-image: url('florida.png'); }
+.state-flag--michigan::before { background-image: url('michigan.png'); }
+.state-flag--minnesota::before { background-image: url('minnesota.png'); }
+.state-flag--mississippi::before { background-image: url('mississippi.png'); }
+.state-flag--missouri::before { background-image: url('missouri.png'); }
