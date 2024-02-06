@@ -1,0 +1,20 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "Other options" } do %>
+    <%= paragraph do %>
+      Here's a quick list of other options you can pass to the combobox:
+    <% end %>
+
+    <%= content do %>
+      <ul class="max-w-2xl text-lg">
+        <li><span class="font-semibold">:autocomplete</span> — choose one of :list, :inline, or :both, defaults to :both</li>
+        <li><span class="font-semibold">:dialog_label</span> — text for the optional label displayed on mobile mode, defaults to nil</li>
+        <li><span class="font-semibold">:input</span> — HTML options to be forwarded to the input, defaults to {}</li>
+        <li><span class="font-semibold">:open</span> — whether the combobox should be open on first render, defaults to false</li>
+      </ul>
+
+      <%= paragraph do %>
+        Any other unrecognized options are forwarded to the input element.
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

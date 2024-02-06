@@ -1,0 +1,33 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "A mobile combobox" } do %>
+    <div>
+      <%= combobox_tag "state", State.all, mobile_at: "640px" %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      If you're reading this on a mobile device, this may not come as a surprise.
+      But these comboboxes behave differently on desktop and mobile.
+
+      <%= sp %>
+      On mobile, the options will appear inside a native HTML dialog element.
+      You can style this however you want. But, by default, the options list will
+      take up the full width
+      of the screen and almost the full height.
+
+      <%= sp %>
+      You can configure the breakpoint at which the combobox switches to mobile mode
+      by passing a <%= mono(":mobile_at") %> option,
+      which takes any valid CSS width value.
+
+      Try opening the above combobox on a small screen!
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= combobox_tag "state", State.all, mobile_at: "640px" %&gt;
+      ))
+    %>
+  <% end %>
+<% end %>

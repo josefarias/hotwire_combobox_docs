@@ -1,0 +1,65 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "Styling" } do %>
+    <div class="youtube">
+      <%= form_with url: search_url do |form| %>
+        <%= form.combobox :search, [] %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      We've come full circle to the original YouTube-style combobox.
+      But this time, let's talk about styling.
+
+      <%= sp %>
+      You can opt-in to the default styles by including the gem's CSS file in your document's head.
+      You can do that via the <%= mono("#combobox_style_tag") %> helper.
+      You can pass any of the usual <%= mono("#stylesheet_link_tag") %> options to it.
+
+      <%= sp %>
+      Regardless of whether you've included the default styles,
+      you always have full control over the combobox's appearance.
+      Simply override these classes in your CSS:
+    <% end %>
+
+    <ul class="max-w-2xl text-lg">
+      <li><span class="font-semibold">.hw-combobox</span>: the fieldset container, wraps the whole component</li>
+      <li><span class="font-semibold">.hw-combobox__input</span>: the field where the user inputs text</li>
+      <li><span class="font-semibold">.hw-combobox__handle</span>: the chevron or downwards arrow</li>
+      <li><span class="font-semibold">.hw-combobox__listbox</span>: the collapsible options container</li>
+      <li><span class="font-semibold">.hw-combobox__option</span>: each individual option</li>
+      <li><span class="font-semibold">.hw-combobox__option--selected</span>: the currently selected option</li>
+      <li><span class="font-semibold">.hw-combobox__dialog</span>: contains the input, listbox, and options when on mobile mode</li>
+      <li><span class="font-semibold">.hw-combobox__dialog__label</span>: optional label displayed on mobile mode</li>
+      <li><span class="font-semibold">.hw-combobox__dialog__input</span>: mobile mode input</li>
+      <li><span class="font-semibold">.hw-combobox__dialog__listbox</span>: mobile mode listbox</li>
+    </ul>
+
+    <%= paragraph do %>
+      You can also override the CSS variables defined by the library.
+      Look in the source code for the full list of variables.
+
+      <%= sp %>
+      Here's one way you could style the combobox to look like the YouTube-style example using Tailwind:
+    <% end %>
+
+    <%=
+      highlight_css(%(
+        .youtube .hw-combobox__input {
+          @apply sm:w-[35rem] rounded-full w-80;
+        }
+        .youtube .hw-combobox__handle {
+          @apply right-3;
+        }
+        .youtube .hw-combobox__listbox {
+          @apply rounded-2xl;
+        }
+        /* Optionally... */
+        .youtube {
+          --hw-handle-image: url("data:image/svg+xml;charset=utf-8,/* magnifying glass svg */");
+        }
+      ))
+    %>
+  <% end %>
+<% end %>

@@ -1,0 +1,42 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "A prefilled combobox" } do %>
+    <div>
+      <%= form_with model: @user, url: user_url(@user) do |form| %>
+        <%= form.combobox :favorite_movie_id, Movie.all %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      You can prefill a combobox with a value.
+
+      <%= sp %>
+      This is most commonly done when using the form builder to edit a record.
+      The library knows how to use the method name
+      (in this example <%= mono(":favorite_movie_id") %>)
+      to find the value and prefill the input.
+      The dropdown option will be preselected as well.
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= form_with model: @user, url: user_url(@user) do |form| %&gt;
+          &lt;%= form.combobox :favorite_movie_id, Movie.all %&gt;
+        &lt;% end %&gt;
+      ))
+    %>
+
+    <%= paragraph do %>
+      When the combobox is async, the library can infer associations based on the
+      presence of the <%= mono("_id") %> suffix.
+      If an association is found, the associated object is loaded and used to prefill the input.
+      You can also provide the association name yourself via the
+      <%= mono(":association_name") %> option.
+
+      <%= sp %>
+      When not using the form builder, you can pass a <%= mono(":value") %>
+      option to the combobox. It will be prefilled if an option is found with the same value.
+    <% end %>
+  <% end %>
+<% end %>

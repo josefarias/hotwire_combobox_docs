@@ -1,0 +1,49 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "A free text combobox" } do %>
+    <div>
+      <%= form_with model: @user, url: user_url(@user) do |form| %>
+        <%= form.combobox :favorite_movie_id, Movie.all,
+              name_when_new: "user[favorite_movie_attributes][name]" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      Sometimes you want to allow the user to enter a value that isn't in the list of options.
+      This is called a free text combobox.
+
+      <%= sp %>
+      In most cases this will be because you're using the combobox to either
+      select an existing record or create a new one.
+
+      <%= sp %>
+      The library knows whether the input value is in the list of options. If it's not,
+      it will use the <%= mono(":name_when_new") %> option
+      to set a new name for the form field. If you switch back to an existing option,
+      the name will be reset to the original.
+
+      <%= sp %>
+      It's the presence of the <%= mono(":name_when_new") %> that tells the
+      combobox it should allow free text. If it's not present, then free text is not allowed.
+
+      <%= sp %>
+      Note that there's nothing stopping you from using the same name for both the combobox
+      and the <%= mono(":name_when_new") %> opion,
+      like in the YouTube-style example.
+
+      <%= sp %>
+      One way you might use this is in conjunction with Rails's
+      <%= mono("accepts_nested_attributes_for") %> feature.
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= form_with model: @user, url: user_url(@user) do |form| %&gt;
+          &lt;%= form.combobox :favorite_movie_id, Movie.all,
+                name_when_new: "user[favorite_movie_attributes][name]" %&gt;
+        &lt;% end %&gt;
+      ))
+    %>
+  <% end %>
+<% end %>

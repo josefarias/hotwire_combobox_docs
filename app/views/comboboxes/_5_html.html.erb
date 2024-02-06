@@ -1,0 +1,37 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "An HTML combobox" } do %>
+    <div>
+      <%= combobox_tag "state", State.all,
+            render_in: { partial: "states/state" } %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      You can pass a full set of rendering options to the combobox. It'll use those
+      options to render each item in the list.
+      Rendering HTML inside the dropdown is as simple as creating a standard partial:
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= combobox_tag "state", State.all,
+              render_in: { partial: "states/state" } %&gt;
+      ), "In your template")
+    %>
+
+    <%= paragraph do %>
+      As you saw from the YouTube-style example, <%= mono(":render_in") %> is also supported
+      in async comboboxes. Simply include the rendering options in the Turbo Stream template.
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= paginated_combobox_options @page.records,
+              for_id: "state-box",
+              render_in: { partial: "states/state" },
+              next_page: @page.last? ? nil : @page.next_param %&gt;
+      ), "In views/states/index.turbo_stream.erb")
+    %>
+  <% end %>
+<% end %>

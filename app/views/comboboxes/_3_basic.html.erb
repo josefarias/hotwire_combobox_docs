@@ -1,0 +1,37 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "A basic combobox" } do %>
+    <div>
+      <%= combobox_tag "state", State.all %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      This is a basic combobox. As plain as can be. Click on it to view all the options.
+      Start typing to filter them down. Here's the code for it:
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= combobox_tag "state", State.all %&gt;
+        &lt;%# Of course these aren't actually all the US states. %&gt;
+        &lt;%# I've selected a few at random for this demo. %&gt;
+      ))
+    %>
+
+    <%= paragraph do %>
+      The first param corresponds to the input's name. It's what the query param will
+      be called when the form is submitted.
+
+      <%= sp %>
+      The second param is the collection of options. It can either be an
+      <%= mono("ActiveRecord::Relation") %>, an array of <%= mono("Hash") %> objects,
+      or a url/path helper.
+
+      <%= sp %>
+      <%= mono("ActiveRecord::Relation") %> and <%= mono("Hash") %> objects will load
+      all the options at once. Filtering is done out of the box by the gem.
+      If you pass a url/path helper, filtering is done asynchronously server-side.
+    <% end %>
+  <% end %>
+<% end %>

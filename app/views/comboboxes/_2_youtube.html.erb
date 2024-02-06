@@ -1,0 +1,59 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "YouTube-style autocomplete" } do %>
+    <div class="youtube">
+      <%= form_with url: search_url do |form| %>
+        <%= form.combobox :search, searchables_path,
+              name_when_new: :search, mobile_at: "0px" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      <span class="font-bold">We'll get to a simpler example soon 😄</span>.
+      Bear with me for a second.
+
+      <%= sp %>
+      This search input is an async combobox. Go ahead. Use it!
+
+      <%= sp %>
+      It's fetching its options from the server by hitting <%= mono("searchables_path") %>
+      and expecting a Turbo Stream template in return. If you scroll down far enough,
+      you'll see the options are loaded in batches.
+
+      <%= sp %>
+      Below is all the code you need to create one of these. It's okay if you don't understand
+      everything yet. You will. But for now, know that this is as complicated as it will get.
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= form_with url: search_url do |form| %&gt;
+          &lt;%= form.combobox :search, searchables_path,
+                name_when_new: :search, mobile_at: "0px" %&gt;
+        &lt;% end %&gt;
+      ), "In views/search/new.html.erb")
+    %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= paginated_combobox_options @page.records,
+              for_id: "search",
+              render_in: { partial: "searchables/searchable" },
+              next_page: @page.last? ? nil : @page.next_param %&gt;
+      ), "In views/searchables/index.turbo_stream.erb")
+    %>
+
+    <%= paragraph do %>
+      <span class="font-bold">That's it!</span>
+
+      <%= sp %>
+      You'll still need to implement the CSS styling, partials for each rendered option,
+      and the back-end search and pagination logic. But even that is only maybe 20 lines of code.
+
+      <%= sp %>
+      Now, before I explain all the options you can pass to the combobox, let's take a look at
+      that simpler example I promised.
+    <% end %>
+  <% end %>
+<% end %>
