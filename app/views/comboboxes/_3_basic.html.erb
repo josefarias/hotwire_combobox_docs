@@ -14,8 +14,6 @@
     <%=
       highlight_erb(%(
         &lt;%= combobox_tag "state", State.all %&gt;
-        &lt;%# Of course these aren't actually all the US states. %&gt;
-        &lt;%# I've selected a few at random for this demo. %&gt;
       ))
     %>
 
@@ -29,9 +27,31 @@
       or a url/path helper.
 
       <%= sp %>
-      <%= mono("ActiveRecord::Relation") %> and <%= mono("Hash") %> objects will load
-      all the options at once. Filtering is done out of the box by the gem.
-      If you pass a url/path helper, filtering is done asynchronously server-side.
+      Each option has a <%= mono("value") %> and a <%= mono("display") %>.
+      The value is what gets submitted with the form.
+      The display is what the user sees in the combobox.
+
+      <%= sp %>
+      For an <%= mono("ActiveRecord::Relation") %>, the <%= mono("value") %> is obtained
+      by calling <%= mono("#id") %> on each object. And the display is obtained
+      by calling <%= mono("#to_combobox_display") %>.
+
+      <%= sp %>
+      For an array of <%= mono("Hash") %> objects, you can provide the <%= mono("value") %>
+      and <%= mono("display") %> keys yourself.
+
+      <%= sp %>
+      Values, displays, and even how autocompletion and filtering work can be customized.
+      Read the source code for this kind of advanced usage.
+
+      <%= sp %>
+      If you pass an <%= mono("ActiveRecord::Relation") %> or an array of <%= mono("Hash") %>
+      objects as options, all items are loaded at once and filtering will be done client-side
+      by the library.
+
+      <%= sp %>
+      If you pass a url/path helper, options are loaded when the combobox is clicked
+      and filtering is done server-side by your app. See the next example for more on that.
     <% end %>
   <% end %>
 <% end %>

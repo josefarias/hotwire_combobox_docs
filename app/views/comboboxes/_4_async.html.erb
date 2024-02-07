@@ -13,12 +13,13 @@
 
       <%= sp %>
       They have some requirements that inline comboboxes don't. For starters,
-      they need an <%= mono("id") %>. This id is automatically determined when using the form
-      helper from the YouTube-style example.
-      But we're not using it here, so we need to provide it.
-      Note that this <%= mono("id") %>, regardless of whether it was
-      inferred in the form helper or passed manually,
-      is always available in the combobox's <%= mono("data-async-id") %> attribute, for convenience.
+      they need an <%= mono("id") %>.
+
+      <%= sp %>
+      If you're using the provided form helper (like in the YouTube example), the <%= mono("id") %>
+      is determined automatically. If not, you'll need to provide it manually.
+      Note that this <%= mono("id") %> is always available in the combobox's
+      <%= mono("data-async-id") %> attribute for easy access, in case you forget it!
 
       <%= sp %>
       Async comboboxes also require you to do the filtering server-side. Whenever the user types
@@ -28,10 +29,11 @@
 
       <%= sp %>
       Finally, you'll have to provide the options via the
-      gem's <%= mono("#paginated_combobox_options") %> helper.
+      gem's <%= mono("#paginated_combobox_options") %> helper. And this needs to happen
+      in a <%= mono("*.turbo_stream.erb") %> template.
 
       <%= sp %>
-      Here's what all that might look like:
+      Here's what that might look like:
     <% end %>
 
     <%=
@@ -62,6 +64,12 @@
       When the user scrolls down far enough,
       the combobox will automatically request that page number in a param accessible via
       <%= mono("params[:page]") %> to the same url or path you provided.
+    <% end %>
+
+    <%= emphasis do %>
+      It's very important that you pass <%= mono("nil") %> to <%= mono(":next_page") %>
+      for the last page. Otherwise, the combobox will keep requesting more pages indefinitely and
+      will overwhelm your server.
     <% end %>
 
     <%=

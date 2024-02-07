@@ -1,5 +1,5 @@
 <%= article do %>
-  <%= render layout: "header", locals: { title: "A free text combobox" } do %>
+  <%= render layout: "header", locals: { title: "A free-text combobox" } do %>
     <div>
       <%= form_with model: @user, url: user_url(@user) do |form| %>
         <%= form.combobox :favorite_movie_id, Movie.all,
@@ -10,27 +10,29 @@
 
   <%= content do %>
     <%= paragraph do %>
-      Sometimes you want to allow the user to enter a value that isn't in the list of options.
-      This is called a free text combobox.
+      Sometimes you want to allow entering a value that isn't in the list of options.
+      This is called a free-text combobox.
 
       <%= sp %>
-      In most cases this will be because you're using the combobox to either
-      select an existing record or create a new one.
+      In most cases this is because you want your combobox to have a dual-purpose. On one hand,
+      provide an existing <%= mono("id") %> as a value for an association. On the other hand,
+      allow the user to enter a new value that will be used to create a new record. You're
+      essentially using a single combobox as two different form fields!
 
       <%= sp %>
-      The library knows whether the input value is in the list of options. If it's not,
-      it will use the <%= mono(":name_when_new") %> option
+      Luckily, the library supports that. It knows whether the input value is in
+      the list of options. If it's not, it will use the <%= mono(":name_when_new") %> option
       to set a new name for the form field. If you switch back to an existing option,
       the name will be reset to the original.
 
       <%= sp %>
-      It's the presence of the <%= mono(":name_when_new") %> that tells the
+      It's the presence of <%= mono(":name_when_new") %> that tells the
       combobox it should allow free text. If it's not present, then free text is not allowed.
 
       <%= sp %>
       Note that there's nothing stopping you from using the same name for both the combobox
       and the <%= mono(":name_when_new") %> opion,
-      like in the YouTube-style example.
+      like in the YouTube example.
 
       <%= sp %>
       One way you might use this is in conjunction with Rails's

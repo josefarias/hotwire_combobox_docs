@@ -22,4 +22,8 @@ module LayoutHelper
   def article(&block)
     tag.article class: "flex flex-col items-center w-full space-y-12", &block
   end
+
+  def emphasis(&block)
+    tag.p class: "max-w-2xl p-4 text-lg border-2 border-black rounded-lg", &block
+  end
 end

@@ -14,7 +14,8 @@
 
       <%= sp %>
       You can opt-in to the default styles by including the gem's CSS file in your document's head.
-      You can do that via the <%= mono("#combobox_style_tag") %> helper.
+      You do that by placing the <%= mono("#combobox_style_tag") %> after your framework styles
+      and before your application styles.
       You can pass any of the usual <%= mono("#stylesheet_link_tag") %> options to it.
 
       <%= sp %>
@@ -41,23 +42,23 @@
       Look in the source code for the full list of variables.
 
       <%= sp %>
-      Here's one way you could style the combobox to look like the YouTube-style example using Tailwind:
+      Here's one way you could style the combobox to look like the YouTube example using Tailwind:
     <% end %>
 
     <%=
       highlight_css(%(
-        .youtube .hw-combobox__input {
-          @apply sm:w-[35rem] rounded-full w-80;
-        }
-        .youtube .hw-combobox__handle {
-          @apply right-3;
-        }
-        .youtube .hw-combobox__listbox {
-          @apply rounded-2xl;
-        }
-        /* Optionally... */
         .youtube {
-          --hw-handle-image: url("data:image/svg+xml;charset=utf-8,/* magnifying glass svg */");
+          .hw-combobox__input {
+            @apply sm:w-[35rem] rounded-full w-80;
+          }
+          .hw-combobox__handle {
+            @apply right-3;
+          }
+          .hw-combobox__listbox {
+            @apply rounded-2xl;
+          }
+          /* Optionally... */
+          --hw-handle-image: url("data:image/svg+xml;charset=utf-8,/* encoded magnifying glass svg */");
         }
       ))
     %>

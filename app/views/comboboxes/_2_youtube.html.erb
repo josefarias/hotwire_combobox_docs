@@ -11,10 +11,11 @@
   <%= content do %>
     <%= paragraph do %>
       <span class="font-bold">We'll get to a simpler example soon 😄</span>.
-      Bear with me for a second.
+      It's okay if you don't understand everything yet. You will. But for now,
+      know that this is as complicated as it will get (which is not a lot!).
 
       <%= sp %>
-      This search input is an async combobox. Go ahead. Use it!
+      This search input is an async combobox. Try it out!
 
       <%= sp %>
       It's fetching its options from the server by hitting <%= mono("searchables_path") %>
@@ -22,8 +23,7 @@
       you'll see the options are loaded in batches.
 
       <%= sp %>
-      Below is all the code you need to create one of these. It's okay if you don't understand
-      everything yet. You will. But for now, know that this is as complicated as it will get.
+      Below is all the code you need to create one of these.
     <% end %>
 
     <%=
@@ -32,7 +32,7 @@
           &lt;%= form.combobox :search, searchables_path,
                 name_when_new: :search, mobile_at: "0px" %&gt;
         &lt;% end %&gt;
-      ), "In views/search/new.html.erb")
+      ), "In your template")
     %>
 
     <%=
@@ -46,10 +46,6 @@
 
     <%= paragraph do %>
       <span class="font-bold">That's it!</span>
-
-      <%= sp %>
-      You'll still need to implement the CSS styling, partials for each rendered option,
-      and the back-end search and pagination logic. But even that is only maybe 20 lines of code.
 
       <%= sp %>
       Now, before I explain all the options you can pass to the combobox, let's take a look at
