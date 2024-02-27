@@ -24,17 +24,17 @@
       Simply override these classes in your CSS:
     <% end %>
 
-    <ul class="max-w-2xl text-lg">
-      <li><span class="font-semibold">.hw-combobox</span>: the fieldset container, wraps the whole component</li>
-      <li><span class="font-semibold">.hw-combobox__input</span>: the field where the user inputs text</li>
-      <li><span class="font-semibold">.hw-combobox__handle</span>: the chevron or downwards arrow</li>
-      <li><span class="font-semibold">.hw-combobox__listbox</span>: the collapsible options container</li>
-      <li><span class="font-semibold">.hw-combobox__option</span>: each individual option</li>
-      <li><span class="font-semibold">.hw-combobox__option--selected</span>: the currently selected option</li>
-      <li><span class="font-semibold">.hw-combobox__dialog</span>: contains the input, listbox, and options when on mobile mode</li>
-      <li><span class="font-semibold">.hw-combobox__dialog__label</span>: optional label displayed on mobile mode</li>
-      <li><span class="font-semibold">.hw-combobox__dialog__input</span>: mobile mode input</li>
-      <li><span class="font-semibold">.hw-combobox__dialog__listbox</span>: mobile mode listbox</li>
+    <ul class="max-w-xl space-y-4 text-lg list-disc">
+      <li><%= bold(".hw-combobox") %>: the fieldset container, wraps the whole component</li>
+      <li><%= bold(".hw-combobox__input") %>: the field where the user inputs text</li>
+      <li><%= bold(".hw-combobox__handle") %>: the chevron or downwards arrow</li>
+      <li><%= bold(".hw-combobox__listbox") %>: the collapsible options container</li>
+      <li><%= bold(".hw-combobox__option") %>: each individual option</li>
+      <li><%= bold(".hw-combobox__option--selected") %>: the currently selected option</li>
+      <li><%= bold(".hw-combobox__dialog") %>: contains the input, listbox, and options when on mobile mode</li>
+      <li><%= bold(".hw-combobox__dialog__label") %>: optional label displayed on mobile mode</li>
+      <li><%= bold(".hw-combobox__dialog__input") %>: mobile mode input</li>
+      <li><%= bold(".hw-combobox__dialog__listbox") %>: mobile mode listbox</li>
     </ul>
 
     <%= paragraph do %>

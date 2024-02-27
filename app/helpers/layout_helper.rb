@@ -16,7 +16,7 @@ module LayoutHelper
   end
 
   def mono(text)
-    tag.span text, class: "whitespace-nowrap font-mono font-semibold"
+    tag.span text, class: "whitespace-nowrap font-mono font-semibold text-base"
   end
 
   def article(&block)
@@ -25,5 +25,9 @@ module LayoutHelper
 
   def emphasis(&block)
     tag.p class: "max-w-2xl p-4 text-lg border-2 border-black rounded-lg", &block
+  end
+
+  def bold(text)
+    tag.strong text, class: "font-semibold"
   end
 end

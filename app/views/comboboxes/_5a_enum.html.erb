@@ -1,0 +1,25 @@
+<%= article do %>
+  <%= render layout: "header", locals: { title: "An enum combobox" } do %>
+    <div>
+      <%= combobox_tag "rating", Movie.ratings %>
+    </div>
+  <% end %>
+
+  <%= content do %>
+    <%= paragraph do %>
+      Enums are supported out of the box. This is because the library supports passing a hash as the second argument.
+      Here's an example for a <%= mono("rating") %> enum that can be any of <%= mono("%w[ G PG PG-13 R NC-17 ]") %>
+    <% end %>
+
+    <%=
+      highlight_erb(%(
+        &lt;%= combobox_tag "rating", Movie.ratings %&gt;
+      ), "In your template")
+    %>
+
+    <%= paragraph do %>
+      If you want more customization (maybe you want to <%= mono("titlecase") %> the options),
+      you can leverage the library's ability to accept a hash, an array, or an array of arrays as the second argument.
+    <% end %>
+  <% end %>
+<% end %>

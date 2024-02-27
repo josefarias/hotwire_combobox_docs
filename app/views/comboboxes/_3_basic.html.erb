@@ -22,36 +22,42 @@
       be called when the form is submitted.
 
       <%= sp %>
-      The second param is the collection of options. It can either be an
-      <%= mono("ActiveRecord::Relation") %>, an array of <%= mono("Hash") %> objects,
-      or a url/path helper.
+      The second param is the collection of options.
+      Each option has a <%= mono("display") %> (what the user sees in the combobox)
+      and a <%= mono("value") %> (what gets submitted with the form).
+      This param can be one of multiple things:
+    <% end %>
 
-      <%= sp %>
-      Each option has a <%= mono("value") %> and a <%= mono("display") %>.
-      The value is what gets submitted with the form.
-      The display is what the user sees in the combobox.
+    <ul class="max-w-xl space-y-4 text-lg list-disc">
+      <li>
+        <%= bold("ActiveRecord::Relation") %>: the <%= mono("display") %> is obtained
+        by calling <%= mono("#to_combobox_display") %> on each object and the
+        <%= mono("value") %> is obtained by calling <%= mono("#id") %>.
+      </li>
+      <li>
+        <%= bold("url/path helper") %>: options are requested asynchronously from this url/path.
+        This is the only way to do server-side filtering. For all other setups, filtering is done
+        client-side by the library. Read on for an example of an async implementation.
+      </li>
+      <li>
+        <%= bold("Single hash") %>: object is iterated with <%= mono("#map") %>.
+        For each entry, options are determined as <%= mono("{ display: option.first, value: option.last }") %>
+      </li>
+      <li>
+        <%= bold("Array of strings") %>: each entry is used as both <%= mono("display") %> and <%= mono("value") %>.
+      </li>
+      <li>
+        <%= bold("Array of arrays") %>: For each entry, options are determined as <%= mono("{ display: option.first, value: option.last }") %>
+      </li>
+      <li>
+        <%= bold("Array of hashes") %>: the <%= mono("display") %> and <%= mono("value") %>
+        are provided as key-value pairs in each hash. e.g. <%= mono('{ display: :Foo, value: :id_123 }') %>.
+      </li>
+    </ul>
 
-      <%= sp %>
-      For an <%= mono("ActiveRecord::Relation") %>, the <%= mono("value") %> is obtained
-      by calling <%= mono("#id") %> on each object. And the display is obtained
-      by calling <%= mono("#to_combobox_display") %>.
-
-      <%= sp %>
-      For an array of <%= mono("Hash") %> objects, you can provide the <%= mono("value") %>
-      and <%= mono("display") %> keys yourself.
-
-      <%= sp %>
+    <%= paragraph do %>
       Values, displays, and even how autocompletion and filtering work can be customized.
       Read the source code for this kind of advanced usage.
-
-      <%= sp %>
-      If you pass an <%= mono("ActiveRecord::Relation") %> or an array of <%= mono("Hash") %>
-      objects as options, all items are loaded at once and filtering will be done client-side
-      by the library.
-
-      <%= sp %>
-      If you pass a url/path helper, options are loaded when the combobox is clicked
-      and filtering is done server-side by your app. See the next example for more on that.
     <% end %>
   <% end %>
 <% end %>
