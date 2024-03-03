@@ -3,8 +3,7 @@
     <div class="youtube">
       <%= form_with url: search_url do |form| %>
         <%= form.combobox :search, searchables_path,
-              name_when_new: :search, mobile_at: "0px",
-              input: { autocomplete: :off } %>
+              name_when_new: :search, mobile_at: "0px" %>
       <% end %>
     </div>
   <% end %>
@@ -31,8 +30,7 @@
       highlight_erb(%(
         &lt;%= form_with url: search_url do |form| %&gt;
           &lt;%= form.combobox :search, searchables_path,
-                name_when_new: :search, mobile_at: "0px",
-                input: { autocomplete: :off } %&gt;
+                name_when_new: :search, mobile_at: "0px" %&gt;
         &lt;% end %&gt;
       ), "In your template")
     %>
