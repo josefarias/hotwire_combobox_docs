@@ -1,6 +1,6 @@
 module LayoutHelper
   def paragraph(&block)
-    tag.p class: "max-w-2xl text-lg", &block
+    tag.p class: "max-w-2xl text-lg w-full", &block
   end
 
   def link(name, uri)

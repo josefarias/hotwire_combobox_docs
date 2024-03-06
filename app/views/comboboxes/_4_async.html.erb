@@ -8,29 +8,21 @@
   <%= content do %>
     <%= paragraph do %>
       Async comboboxes are useful because no time is spent loading all the options
-      before the page is rendered. Instead, options are fetched when the combobox is first opened.
+      before the page is rendered. Instead, options are fetched when the combobox is first opened,
+      and re-fetched as the user types in the combobox.
       You might reach for one of these when you're filtering a large dataset.
 
       <%= sp %>
-      They have some requirements that inline comboboxes don't. For starters,
-      they need an <%= mono("id") %>.
-
-      <%= sp %>
-      If you're using the provided form helper (like in the YouTube example), the <%= mono("id") %>
-      is determined automatically. If not, you'll need to provide it manually.
-      Note that this <%= mono("id") %> is always available in the combobox's
-      <%= mono("data-async-id") %> attribute for easy access, in case you forget it!
-
-      <%= sp %>
-      Async comboboxes also require you to do the filtering server-side. Whenever the user types
+      Async comboboxes allow you to do the filtering server-side. Whenever the user types
       into the input, the combobox will perform a debounced request to your server
       to the url or path you provided. The user's input will be sent as a
       param accessible via <%= mono("params[:q]") %>.
 
       <%= sp %>
-      Finally, you'll have to provide the options via the
-      gem's <%= mono("#async_combobox_options") %> helper. And this needs to happen
-      in a <%= mono("*.turbo_stream.erb") %> template.
+      You'll provide the combobox options using the
+      gem's <%= mono("#async_combobox_options") %> helper.
+      This needs to happen either in a <%= mono("*.turbo_stream.erb") %> template,
+      or directly inside the controller.
 
       <%= sp %>
       Here's what that might look like:
@@ -54,8 +46,23 @@
 
     <%=
       highlight_erb(%(
-        &lt;%= async_combobox_options @states, for_id: "state-box" %&gt;
+        &lt;%= async_combobox_options @states %&gt;
       ), "In views/states/index.turbo_stream.erb")
+    %>
+
+    <%= paragraph do %>
+      Or, you can return the options directly from the controller:
+    <% end %>
+
+    <%=
+      highlight_rb(%(
+        class StatesController &lt; ApplicationController
+          def index
+            @states = State.search params[:q]
+            render turbo_stream: helpers.async_combobox_options @states
+          end
+        end
+      ), "In your controller, no need for a template")
     %>
 
     <%= paragraph do %>
@@ -76,7 +83,6 @@
       highlight_erb(%(
         &lt;%# This is using geared_pagination syntax %&gt;
         &lt;%= async_combobox_options @page.records,
-              for_id: "state-box",
               next_page: @page.last? ? nil : @page.next_param %&gt;
       ), "In views/states/index.turbo_stream.erb")
     %>
