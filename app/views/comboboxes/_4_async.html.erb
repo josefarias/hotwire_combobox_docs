@@ -37,7 +37,9 @@
     <%=
       highlight_rb(%(
         class States &lt; ApplicationRecord
-          scope :search, -&gt;(q) {q.blank? all : where("title LIKE ?", "#{q}%") }
+          scope :search, -&gt;(q) {
+            q.blank? all : where("title LIKE ?", "\#{q}%")
+          }
         end
       ), "In your model")
     %>
