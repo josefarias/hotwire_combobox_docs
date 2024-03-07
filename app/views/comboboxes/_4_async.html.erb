@@ -33,6 +33,14 @@
         &lt;%= combobox_tag "state", states_path, id: "state-box" %&gt;
       ), "In your template")
     %>
+    
+    <%=
+      highlight_rb(%(
+        class States &lt; ApplicationRecord
+          scope :search, -&gt;(q) {q.blank? all : where("title LIKE ?", "#{q}%") }
+        end
+      ), "In your model")
+    %>
 
     <%=
       highlight_rb(%(
