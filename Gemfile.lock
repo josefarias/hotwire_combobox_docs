@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/josefarias/hotwire_combobox.git
+  revision: f275e4873aad63811c654e0118a247e6836825c7
+  specs:
+    hotwire_combobox (0.2.0)
+      rails (>= 7.0.7.2)
+      stimulus-rails (>= 1.2)
+      turbo-rails (>= 1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -107,10 +116,6 @@ GEM
       addressable (>= 2.5.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hotwire_combobox (0.1.43)
-      rails (>= 7.0.7.2)
-      stimulus-rails (>= 1.2)
-      turbo-rails (>= 1.2)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -280,7 +285,7 @@ DEPENDENCIES
   coderay
   debug
   geared_pagination
-  hotwire_combobox
+  hotwire_combobox!
   importmap-rails
   jbuilder
   puma (>= 5.0)

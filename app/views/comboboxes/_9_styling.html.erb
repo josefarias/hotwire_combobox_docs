@@ -13,25 +13,37 @@
       But this time, let's talk about styling.
 
       <%= sp %>
-      You can opt-in to the default styles by including the gem's CSS file in your document's head.
-      You do that by placing the <%= mono("#combobox_style_tag") %> after your framework styles
-      and before your application styles.
-      You can pass any of the usual <%= mono("#stylesheet_link_tag") %> options to it.
+      You can opt-in to the default styles by including the gem's CSS file in your document's head
+      via <%= mono("#combobox_style_tag") %> . You can pass any of the usual
+      <%= mono("#stylesheet_link_tag") %> options to this helper.
 
       <%= sp %>
+      Because there are many things you need to style, it is highly recommended you use
+      the default styles as a starting point.
       Regardless of whether you've included the default styles,
       you always have full control over the combobox's appearance.
-      Simply override these classes in your CSS:
+      Simply override some of these classes in your CSS:
     <% end %>
 
     <ul class="md:px-0 max-w-xl px-8 space-y-4 text-lg list-disc">
       <li><%= bold(".hw-combobox") %>: the fieldset container, wraps the whole component</li>
+      <li><%= bold(".hw-combobox--multiple") %>: applied to the fieldset container on multiselect comboboxes</li>
+      <li><%= bold(".hw-combobox__main__wrapper") %>: wraps the input (combobox) and options list (listbox)</li>
       <li><%= bold(".hw-combobox__input") %>: the field where the user inputs text</li>
+      <li><%= bold(".hw-combobox__input[data-queried]") %>: applied to inputs which contain text</li>
+      <li><%= bold(".hw-combobox__input--invalid") %>: applied to the input when it's invalid</li>
+      <li><%= bold(".hw-combobox__label") %>: the main label for the combobox</li>
       <li><%= bold(".hw-combobox__handle") %>: the chevron or downwards arrow</li>
       <li><%= bold(".hw-combobox__listbox") %>: the collapsible options container</li>
       <li><%= bold(".hw-combobox__option") %>: each individual option</li>
       <li><%= bold(".hw-combobox__option--selected") %>: the currently selected option</li>
+      <li><%= bold(".hw-combobox__option--blank") %>: applied to the blank option, if it exists</li>
+      <li><%= bold(".hw-combobox__group") %>: applied to the &lt;ul&gt; element wrapping an option group</li>
+      <li><%= bold(".hw-combobox__group__label") %>: the label at the top of each option group</li>
+      <li><%= bold(".hw-combobox__chip") %>: the chip used to represent selected options in a multiselect combobox</li>
+      <li><%= bold(".hw-combobox__chip__remover") %>: the element used to remove a multiselect chip</li>
       <li><%= bold(".hw-combobox__dialog") %>: contains the input, listbox, and options when on mobile mode</li>
+      <li><%= bold(".hw-combobox__dialog__wrapper") %>: wraps the dialog used on mobile mode</li>
       <li><%= bold(".hw-combobox__dialog__label") %>: optional label displayed on mobile mode</li>
       <li><%= bold(".hw-combobox__dialog__input") %>: mobile mode input</li>
       <li><%= bold(".hw-combobox__dialog__listbox") %>: mobile mode listbox</li>
@@ -42,13 +54,14 @@
       Look in the source code for the full list of variables.
 
       <%= sp %>
-      Here's one way you could style the combobox to look like the YouTube example using Tailwind:
+      Here's one way you could style the combobox to look like the YouTube example using Tailwind
+      (although you could use any CSS framework or vanilla CSS):
     <% end %>
 
     <%=
       highlight_css(%(
         .youtube {
-          .hw-combobox__input {
+          .hw-combobox__main__wrapper {
             @apply sm:w-[35rem] rounded-full w-80;
           }
           .hw-combobox__handle {
@@ -57,7 +70,7 @@
           .hw-combobox__listbox {
             @apply rounded-2xl;
           }
-          /* Optionally... */
+          /* Magnifying glass icon: */
           --hw-handle-image: url("data:image/svg+xml;charset=utf-8,/* encoded magnifying glass svg */");
         }
       ))

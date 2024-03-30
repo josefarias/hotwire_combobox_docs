@@ -9,7 +9,7 @@
     @apply flex items-center justify-center w-full;
   }
 
-  .youtube .hw-combobox__input {
+  .youtube .hw-combobox__main__wrapper {
     @apply sm:w-[35rem] rounded-full w-80;
   }
 

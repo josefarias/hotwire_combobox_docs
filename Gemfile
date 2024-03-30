@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 # Gems that are specific to this demo
-gem "hotwire_combobox"
+gem "hotwire_combobox", github: "josefarias/hotwire_combobox"
 gem "geared_pagination"
 gem "coderay"
 

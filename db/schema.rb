@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_27_010611) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "favorite_movie_id", null: false
+    t.integer "favorite_movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["favorite_movie_id"], name: "index_users_on_favorite_movie_id"
