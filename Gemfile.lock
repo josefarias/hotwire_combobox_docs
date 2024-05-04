@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/josefarias/hotwire_combobox.git
-  revision: f275e4873aad63811c654e0118a247e6836825c7
+  revision: 072c3f5cc230added69203140d659e281cce0f70
   specs:
-    hotwire_combobox (0.2.0)
+    hotwire_combobox (0.2.5)
       rails (>= 7.0.7.2)
       stimulus-rails (>= 1.2)
       turbo-rails (>= 1.2)
@@ -123,8 +123,8 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.7.2)
-    irb (1.12.0)
-      rdoc
+    irb (1.13.0)
+      rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -150,20 +150,20 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
-    nokogiri (1.16.2-aarch64-linux)
+    nio4r (2.7.1)
+    nokogiri (1.16.4-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.2-arm-linux)
+    nokogiri (1.16.4-arm-linux)
       racc (~> 1.4)
-    nokogiri (1.16.2-arm64-darwin)
+    nokogiri (1.16.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86-linux)
+    nokogiri (1.16.4-x86-linux)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-darwin)
+    nokogiri (1.16.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     psych (5.1.2)
       stringio
@@ -171,7 +171,7 @@ GEM
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.10)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -208,11 +208,11 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
-    rake (13.1.0)
-    rdoc (6.6.2)
+    rake (13.2.1)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     regexp_parser (2.9.0)
-    reline (0.4.3)
+    reline (0.5.5)
       io-console (~> 0.5)
     rexml (3.2.6)
     rubyzip (2.3.2)
