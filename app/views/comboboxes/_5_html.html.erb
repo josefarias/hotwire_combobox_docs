@@ -21,13 +21,16 @@
 
     <%= paragraph do %>
       As you saw from the YouTube example, <%= mono(":render_in") %> is also supported
-      in async comboboxes. Simply include the rendering options in the Turbo Stream template.
+      in async comboboxes. Simply include the rendering options in the Turbo Stream template. 
+      Please note that since the options are requested as a turbo_stream response, you will 
+      need to ensure that you are using a <%= mono(".turbo_stream.erb") %> partial. If you 
+      want to use an html partial, simply add <%= mono("formats: [:html]") %> to the <%= mono(":render_in") %> options.
     <% end %>
 
     <%=
       highlight_erb(%(
         &lt;%= async_combobox_options @page.records,
-              render_in: { partial: "states/state" },
+              render_in: { partial: "states/state", formats: [:html] },
               next_page: @page.last? ? nil : @page.next_param %&gt;
       ), "In views/states/index.turbo_stream.erb")
     %>
