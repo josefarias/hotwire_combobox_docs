@@ -1,6 +1,6 @@
 module LayoutHelper
   def paragraph(&block)
-    tag.p class: "max-w-2xl text-lg w-full", &block
+    tag.p class: "max-w-2xl text-xl w-full", &block
   end
 
   def link(name, uri)
@@ -16,7 +16,7 @@ module LayoutHelper
   end
 
   def mono(text)
-    tag.span text, class: "font-mono font-semibold text-base"
+    tag.span text, class: "font-mono font-semibold text-lg"
   end
 
   def article(&block)
@@ -24,7 +24,7 @@ module LayoutHelper
   end
 
   def emphasis(&block)
-    tag.p class: "max-w-2xl p-4 text-lg border-2 border-black rounded-lg", &block
+    tag.p class: "max-w-2xl p-4 text-xl border-2 border-black rounded-lg", &block
   end
 
   def bold(text)
